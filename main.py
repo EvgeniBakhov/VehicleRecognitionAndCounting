@@ -1,10 +1,12 @@
+# ©Created by Yevhen Bakhov, 2021.
+
 import cv2
 import numpy as np
 from time import sleep
 
 fps = 60                                            # Frames per second of incoming video
 
-incoming_video = cv2.VideoCapture('some_video.mp4')
+incoming_video = cv2.VideoCapture('video.mp4')
 subtractor = cv2.bgsegm.createBackgroundSubtractorMOG()
 
 while True:
