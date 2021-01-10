@@ -49,3 +49,6 @@ while True:
 
     if cv2.waitKey(1) == 27:        # Key to exit program (ESC)
         break
+        
+cv2.destroyAllWindows()
+incoming_video.release()
