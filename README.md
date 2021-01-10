@@ -25,6 +25,9 @@ Before running program:
 
 ________________________________________________________________________________________________________________________
 
+##Version 1.0.2
+* Added minimal threshold for rectangle dimensions to avoid false positives
+
 ##Version 1.0.1
 * System detects moving objects.
 * Visualizing a rectangles around moving objects.

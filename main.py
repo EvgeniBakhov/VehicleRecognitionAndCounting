@@ -6,6 +6,9 @@ from time import sleep
 
 fps = 60                                            # Frames per second of incoming video
 
+min_rect_width = 50
+min_rect_height = 50
+
 incoming_video = cv2.VideoCapture('video.mp4')
 subtractor = cv2.bgsegm.createBackgroundSubtractorMOG()
 
@@ -34,10 +37,14 @@ while True:
     dilated_contours_video = cv2.morphologyEx(dilated_contours_video, cv2.MORPH_CLOSE, kernel)
 
     # Finds contours
-    contours, height = cv2.findContours(dilated_contours_video, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    contours, hierarchy = cv2.findContours(dilated_contours_video, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
     for(i, c) in enumerate(contours):
         (x, y, width, height) = cv2.boundingRect(c)     # Creates a rectangle around the contours
+
+        valid_dimensions = (width >= min_rect_width) and (height >= min_rect_height)
+        if not valid_dimensions:        # If rectangle smaller then minimal dimensions values
+            continue                    # we do not detect the vehicle
 
         cv2.rectangle(original_video, (x, y), ((x + width), (y + height)), (0, 0, 255), 1)    # Visualize a rectangle
 
@@ -49,6 +56,6 @@ while True:
 
     if cv2.waitKey(1) == 27:        # Key to exit program (ESC)
         break
-        
+
 cv2.destroyAllWindows()
 incoming_video.release()
