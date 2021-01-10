@@ -1,5 +1,5 @@
 # **VEHICLE RECOGNITION AND COUNTING**
-______________________________________________________
+________________________________________________________________________________________________________________________
 
 _This project is a course project for Computer Graphics._
 
@@ -23,8 +23,12 @@ Before running program:
 
 - you need to rename your video to 'video.mp4' or use one of example videos OR change parameter passed into cv2.VideoCapture()
 
-Versions:
+________________________________________________________________________________________________________________________
 
+##Version 1.0.1
+* System detects moving objects.
+* Visualizing a rectangles around moving objects.
+* Example video added.
 
 
 

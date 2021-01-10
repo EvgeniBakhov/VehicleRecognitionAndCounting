@@ -28,3 +28,24 @@ while True:
 
     # Get kernel with ellipse form and size 5x5
     kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
+
+    # Creates video with dilated contours of the vehicles
+    dilated_contours_video = cv2.morphologyEx(dilated, cv2.MORPH_CLOSE, kernel)
+    dilated_contours_video = cv2.morphologyEx(dilated_contours_video, cv2.MORPH_CLOSE, kernel)
+
+    # Finds contours
+    contours, height = cv2.findContours(dilated_contours_video, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+
+    for(i, c) in enumerate(contours):
+        (x, y, width, height) = cv2.boundingRect(c)     # Creates a rectangle around the contours
+
+        cv2.rectangle(original_video, (x, y), ((x + width), (y + height)), (0, 0, 255), 1)    # Visualize a rectangle
+
+    # Shows a window with video with contours of the vehicles
+    cv2.imshow("Contours", dilated_contours_video)
+
+    # Shows an original video
+    cv2.imshow("Original video stream", original_video)
+
+    if cv2.waitKey(1) == 27:        # Key to exit program (ESC)
+        break
