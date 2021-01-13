@@ -34,9 +34,12 @@ def find_center(x_pos, y_pos, rect_width, rect_height):     # We use center of t
 
 
 while True:
-    self, original_video = incoming_video.read()    # Reading from input video stream
+    self, original_video = incoming_video.read()            # Reading from input video stream
     time = float(1 / fps)
-    sleep(time)                                     # Waiting for the next frame
+    sleep(time)                                             # Waiting for the next frame
+
+    if original_video is None:
+        break
 
     # Turns original colors into grayscale
     grayscale = cv2.cvtColor(original_video, cv2.COLOR_BGR2GRAY)
@@ -94,9 +97,12 @@ while True:
 
     # Shows a window with video with contours of the vehicles
     cv2.imshow("Contours", dilated_contours_video)
-
     # Shows an original video
     cv2.imshow("Original video stream", original_video)
+
+    # cv2.imshow("Grayscale", grayscale)
+    # cv2.imshow("Blurred", blurred)
+    # cv2.imshow("Subtracted", subtracted)
 
     # Key to exit program (ESC)
     if cv2.waitKey(1) == 27:

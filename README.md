@@ -35,16 +35,19 @@ NOT suitable for night traffic.
 
 ________________________________________________________________________________________________________________________
 
-##Version 1.0.3
+## Version 1.0.4
+* Added last frame check
+
+## Version 1.0.3
 * Added counter for detected vehicle
 * Created a line vehicle to cross with  
 * Implemented vehicle counting in case of crossing the line
 * System calibrating
 
-##Version 1.0.2
+## Version 1.0.2
 * Added minimal threshold for rectangle dimensions to avoid false positives
 
-##Version 1.0.1
+## Version 1.0.1
 * System detects moving objects.
 * Visualizing a rectangles around moving objects.
 * Example video added.
